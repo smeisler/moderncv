@@ -1,0 +1,262 @@
+\documentclass[12pt,legalpaper,sans]{moderncv} %a4paper
+% SET UP BOLD NAME %
+\usepackage{xstring}
+\usepackage{etoolbox}
+\newboolean{bold}
+\newcommand{\makeauthorsbold}[1]{%
+  \DeclareNameFormat{author}{%
+  \setboolean{bold}{false}%
+    \renewcommand{\do}[1]{\expandafter\ifstrequal\expandafter{\namepartfamily}{####1}{\setboolean{bold}{true}}{}}%
+    \docsvlist{#1}%
+    \ifthenelse{\value{listcount}=1}
+    {%
+      {\expandafter\ifthenelse{\boolean{bold}}{\mkbibbold{\namepartfamily\addcomma\addspace \namepartgiveni}}{\namepartfamily\addcomma\addspace \namepartgiveni}}%
+    }{\ifnumless{\value{listcount}}{\value{liststop}}
+      {\expandafter\ifthenelse{\boolean{bold}}{\mkbibbold{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni}}{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni}}%
+      {\expandafter\ifthenelse{\boolean{bold}}{\mkbibbold{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni\addcomma\isdot}}{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni\addcomma\isdot}}%
+      }
+    \ifthenelse{\value{listcount}<\value{liststop}}
+    {\addcomma\space}{}
+  }
+}
+
+% CHANGE BIB BACKEND TO SORT BY YEAR
+\usepackage[backend=biber, style=nature, sorting=none, maxbibnames=99,defernumbers=true]{biblatex}
+%\usepackage{multibib}
+\addbibresource{publications.bib}
+
+\moderncvstyle{casual}
+\moderncvcolor{burgundy}                               % color options 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'
+
+% character encoding
+%\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+\setlength{\footskip}{136.00005pt}                 % depending on the amount of information in the footer, you need to change this value. comment this line out and set it to the size given in the warning
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvheadnamewidth}{10cm}            % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% font loading
+% for luatex and xetex, do not use inputenc and fontenc
+% see https://tex.stackexchange.com/a/496643
+\ifxetexorluatex
+  \usepackage{fontspec}
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX}
+  \setmainfont{Latin Modern Roman}
+  \setsansfont{Latin Modern Sans}
+  \setmonofont{Latin Modern Mono}
+  \setmathfont{Latin Modern Math} 
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{lmodern}
+\fi
+
+% personal data
+\name{Steven Lee}{Meisler}
+\title{Curriculum Vitae}                               % optional, remove / comment the line if not wanted
+\address{Richards Building, 5th Floor. 3700 Hamilton Walk.}{Philadelphia, PA 19103}{USA}% optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
+%\phone[mobile]{+1~(234)~567~890}                   % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
+\email{Steven.Meisler@pennmedicine.upenn.edu}                               % optional, remove / comment the line if not wanted
+\homepage{www.stevenmeisler.com}                         % optional, remove / comment the line if not wanted
+% Social icons
+\social[orcid]{0000-0002-8888-1572}                  % optional, remove / comment the line if not wanted
+\social[googlescholar]{tBFKYuYAAAAJ}%{0lB9-GcAAAAJ&hl}            % optional, remove / comment the line if not wanted
+\social[linkedin]{Steven-Meisler}                        % optional, remove / comment the line if not wanted
+\social[twitter]{StevenMeisler}                             % optional, remove / comment the line if not wanted
+%\social[mastodon]{mastodon.online/@smeisler}                             % optional, remove / comment the line if not wanted
+\social[github]{Smeisler}                              % optional, remove / comment the line if not wanted
+%\social[gitlab]{jdoe}                              % optional, remove / comment the line if not wanted
+\photo[70pt][0.4pt]{ny_pic_head.png}                       
+%\quote{}                                 % optional, remove / comment the line if not wanted
+
+% bibliography adjustments (only useful if you make citations in your resume, or print a list of publications using BibTeX)
+%   to show numerical labels in the bibliography (default is to show no labels)
+%\makeatletter\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}\makeatother
+\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}
+%   to redefine the bibliography heading string ("Publications")
+%\renewcommand{\refname}{Articles}
+
+% bibliography with multiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+\makeauthorsbold{Steven,Meisler}
+% ---------------------------------------------------------
+\makecvtitle
+Steven is a developmental neuroscientist whose graduate work used multimodal neuroimaging (fMRI and DWI) and psychocognitive evaluations to study the neural bases of reading abilities, disabilities, and intervention in children. As a postdoctoral fellow at the University of Pennsylvania, he is using large datasets and cutting-edge techniques to investigate white matter developmental trajectories in infancy. He is broadly interested in characterizing early life white matter trajectories, and quantifying the effect of psychiatric risk on white matter maturation. Steven received his bachelor’s and master's degrees in bioengineering from the University of Pennsylvania in 2017 and 2018, and his PhD from Harvard University in Speech and Hearing Bioscience and Technology in May 2024.
+
+\section{Education}
+\cventry{2019--2024}{PhD in Speech and Hearing Bioscience and Technology}{Harvard University, Division of Medical Sciences}{Cambridge, MA}{}{Secondary Field in Mind, Brain \& Behavior \\ Dissertation: "White Matter Structural Correlates of Reading Abilities, Disabilities, and Intervention" - Advisor: John Gabrieli, PhD}
+\cventry{2017--2018}{MSE in Bioengineering}{University of Pennsylvania}{Philadelphia, PA}{\textit{3.79/4}}{Thesis: "Evaluating the Effect of Intracranial EEG Data Cleaning on Univariate and Multivariate Classifier Performance" - Advisor: Michael Kahana, PhD}
+\cventry{2013--2017}{BSE in Bioengineering}{University of Pennsylvania}{Philadelphia, PA}{\textit{3.70/4}}{\textit{magna cum laude} \\ Minors in Mathematics, Jazz Studies, and Engineering Entrepreneurship}  % arguments 3 to 6 can be left empty
+
+% ---------------------------------------------------------
+
+\section{Research Positions}
+
+\cventry{2024--}{Postdoctoral Fellow}{Lifespan Informatics \& Neuroimaging Center}{University of Pennsylvania (PI: Theodore Satterthwaite, MD)}{}{\begin{itemize}
+\item Investigating white matter micro- and macrostructural trajectories in infants and toddlers, and how they are impacted by perinatal insult (e.g., low gestational age).
+\item Gauging the generalizability of white matter growth curves derived from research-quality datasets to data acquired clinically.
+\item Contributing to neuroimaging preprocessing software development (\textit{QSIPrep}, \textit{QSIRecon}, \textit{XCP-D}).
+\end{itemize}}
+
+\cventry{Summer 2024}{Research Scientist Intern}{Turing Medical}{St. Louis, MO}{}{
+\begin{itemize}
+\item Developed and tested neuroimaging software solutions for clinical practice.
+\end{itemize}
+}
+
+\cventry{2019--2024}{PhD Candidate}{Gabrieli Lab}{MIT Brain and Cognitive Science (PI: John Gabrieli, PhD)}{NIH T32 Trainee and F31 Fellow}{
+%Detailed achievements:
+\begin{itemize}
+\item Used advanced diffusion-weighted imaging models to study white matter microstructural correlates of reading in large pediatric cohorts (> 1,000 participants).
+\item Studied longitudinal microstructural changes in white matter associated with response to reading intervention.
+\item Examined contributions of right hemispheric activity to reading improvement after intervention among dyslexic children.
+\end{itemize}
+}
+
+\cventry{2018--2019}{Clinical Research Coordinator}{Laboratory for NeuroImaging of Coma and Consciousness}{Massachusetts General Hospital (PI: Brian Edlow, MD)}{}{
+%Detailed achievements:
+\begin{itemize}
+\item Used machine learning to test if EEG and MRI biometrics in the ICU can predict long-term recovery outcomes from traumatic brain injury.
+\item Was responsible for screening patients, as well as submitting and maintaining regulatory documentation.
+\end{itemize}
+}
+
+\cventry{2017--2018}{Graduate Research Assistant}{Computational Memory Lab}{University of Pennsylvania (PI: Michael Kahana, PhD)}{}{
+%Detailed achievements:
+\begin{itemize}
+\item Researched efficacy of various data preprocessing methods on classification of neural activity during memory tasks
+\item Created a Python‐based GUI that visualizes and annotates EEG signals for analysis in a multi‐site DARPA‐funded clinical study
+\end{itemize}
+}
+% ---------------------------------------------------------
+%\newpage
+
+% Publications from a BibTeX file without multibib
+%  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% CONSIDER MERGING WITH PREAMBLE PART
+%  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
+%\nocite{*}
+%\bibliographystyle{plain}
+%\bibliography{publications}
+
+\nocite{*}
+\textit{\\ * Denotes Equal Authorship}
+\printbibliography[title=Published Articles, type=article, keyword={published}, resetnumbers=true]
+%\printbibliography[title=Under Review, type=article, keyword={submitted}, resetnumbers=true]
+\printbibliography[title=Articles in Review / Revision, type=article, keyword={submitted}, resetnumbers=true]
+% ---------------------------------------------------------
+\section{Funding}
+\subsection{External}
+\cventry{9/2025 -- 8/2026}{Hartwell Fellowship}{}
+{\newline Funding Agency: Hartwell Foundation}{}{}
+\cventry{8/2024 -- 8/2025}{Psychosis: A Convergent Neuroscience Perspective}{}
+{\newline Funding Agency: NIH, NIMH (type: T32; MH019112)}{Role: Trainee}{(PI: Raquel E. Gur)}
+\cventry{9/2023 -- 05/2024}{Neurocognitive Mechanisms of Positive Intervention Response in Reading Disability}{}{\newline Funding Agency: NIH, NICHD (type: F31; HD111139)}{Role: PI}{}
+\cventry{8/2019 -- 8/2022}{Training in Speech and Hearing Sciences}{}{\newline Funding Agency: NIH, NIDCD (type: T32; DC000038)}{Role: Trainee}{(PI: Gwenaelle S. Géléoc)}
+% ---------------------------------------------------------
+\printbibliography[title=Invited Talks, type=misc, resetnumbers=true] 
+\printbibliography[title=Poster Presentations, type=unpublished, resetnumbers=true] 
+
+% Publications from a BibTeX file using the multibib package
+%\section{Publications}
+%\nocitebook{book1,book2}
+%\bibliographystylebook{plain}
+%\bibliographybook{publications}                   % 'publications' is the name of a BibTeX file
+%\nocitemisc{misc1,misc2,misc3}
+%\bibliographystylemisc{plain}
+%\bibliographymisc{publications}                   % 'publications' is the name of a BibTeX file
+
+
+
+% ---------------------------------------------------------
+\section{Honors \& Awards}
+\cvitem{2/2026-2/2028}{\textbf{Career Development Institute in Psychiatry Fellowship}, University of Pittsburgh and Stanford University}
+\cvitem{9/2025-8/2026}{\textbf{Hartwell Fellowship}, supporting early-stage biomedical research with potential to benefit children, Hartwell Foundation}
+\cvitem{9/2025-1/2026}{\textbf{ABCD-Repronim Teaching Fellow}, ReproNim: A Center for Reproducible Neuroimaging Computation}
+\cvitem{6/2024-06/2025}{\textbf{Reproducible Neuroimaging Fellow}, ReproNim-International Neuroinformatics Coordinating Facility (INCF)}
+\cvitem{5/2024}{\textbf{Ragnar \& Margaret Naess Award} for exceptional musical talent and commitment to performance, MIT}
+\cvitem{8/2022}{\textbf{Patrick J. McGovern Student Travel Award}, MIT}
+\cvitem{Summer 2022}{\textbf{Selected for Neurohackademy 2022}}
+\cvitem{3/2022}{\textbf{Certificate of Distinction in Teaching}, Harvard University}
+\cvitem{3/2020}{\textbf{Mind Brain Behavior Graduate Student Award}, Harvard University}
+\cvitem{3/2019}{\textbf{University Fellowship} \textit{(declined)}, The Ohio State University}
+\cvitem{2017}{\textbf{\textit{magna cum laude}}, University of Pennsylvania}
+\cvitem{2015 -- 2017}{\textbf{Dean's List}, University of Pennsylvania}
+% ---------------------------------------------------------
+
+\section{Skills}
+\cvitem{}{1 - Basic Knowledge; 5 - Expert}
+\cvskillhead[-0.1em][Level][Skill][][Comments]
+\cvskillentry*{Computing:}{5}{Python}{}{Comfortable with data analysis, Jupyter, and Python-based software development}
+\cvskillentry{}{4}{MATLAB}{}{Can use MATLAB if required, but I prefer Python and terminal tools}
+\cvskillentry{}{4}{Bash / Terminal}{}{Proficient in scripting and parallelizing jobs with HPC schedulers}
+\cvskillentry{}{3}{R}{}{It's a work in progress...}
+\cvskillentry{}{4}{\LaTeX}{}{Prefer to write papers using either Overleaf or Google Docs (+Zotero)}
+\cvskillentry*[1em]{Methods}{5}{DWI}{}{Familiar with basic tensor and advanced diffusion modeling approaches}
+\cvskillentry{}{4}{fMRI}{}{Familiar with several univariate and multivariate analytical approaches}
+\cvskillentry{}{2}{EEG Time Series Analysis}{}{Master's thesis heavily employed ML-based analysis of continuous time-frequency decomposition}
+\cvitem{}{\textbf{Other Skills}}
+\cvdoubleitem{\textbf{Study\\Coordination}}{EPIC, REDCap, IRB}{\textbf{Open Science}}{GitHub, BIDS-apps}
+
+% ---------------------------------------------------------
+\section{Verified Peer Reviews}
+\cvitem{-}{\textbf{\textit{Nature Methods, Proceedings of the National Academy of Sciences, Journal of Neuroscience, Imaging Neuroscience, Biological Psychiatry, NeuroImage, Brain Structure \& Function, npj Science of Learning, Neurobiology of Language, Brain Research Bulletin, Neuroinformatics, Neuropsychologia, Frontiers in Neuroscience}}}
+%\cvitem{-}{\textbf{\textit{Journal of Neuroscience}}}
+%\cvitem{-}{\textbf{\textit{Biological Psychiatry}}}
+%\cvitem{-}{\textbf{\textit{NeuroImage}}}
+%\cvitem{-}{\textbf{\textit{Brain Structure \& Function}}}
+%\cvitem{-}{\textbf{\textit{npj Science of Learning}}}
+%\cvitem{-}{\textbf{\textit{Brain Research Bulletin}}}
+%\cvitem{-}{\textbf{\textit{Frontiers in Neuroscience}}}
+% ---------------------------------------------------------
+
+\section{Professional \& Service Affiliations}
+\cvitem{2025--Present}{Trainee Committee, Flux Congress}
+\cvitem{2025--Present}{Community Liaison, Open Science Special Interest Group, Organization for Human Brain Mapping}
+\cvitem{09/2024}{Promoted to Moderator, NeuroStars support forum (\url{Neurostars.org})}
+%\cvitem{2021--Present}{Member, Organization for Human Brain Mapping}
+\cvitem{2019--Present}{Volunteer, Virtual Bedside Concerts, Mass General Brigham}
+%\cvitem{2019--Present}{Member, Cognitive Neuroscience Society}
+\cvitem{2019--2021}{Co-Chair, American Congress of Rehabilitation Medicine, Arts \& Neuroscience Cognition Task‐Force}
+%\cvitem{2018--2019}{Member, Society for Music Perception \& Cognition}
+% ---------------------------------------------------------
+
+\section{Teaching Experience}
+\subsection{Teaching Fellow, ABCD-ReproNim Course}
+\cvitem{2025}{\textbf{ABCD-ReproNim Course}}
+The ABCD Course on Responsible and Reproducible Data Analyses is a free, open, and virtual educational program based on modern active learning educational approaches, including the use of inverted classroom practices, collaborative learning projects, and a hack week model. Using the “flipped classroom” approach, ABCD-ReproNim students first receive didactic instruction across a semester-long online course that includes asynchronous content delivery via video presentations. Additional course readings are provided to enhance and reinforce online lessons, and data exercises are assigned to ensure learning objectives were met. Students are encouraged to self-organize into small, collaborative learning groups and develop proposals for ABCD data analysis projects. At the completion of the online course, students may participate in a Project Week, where they apply the skills learned and work towards completion of their project activities and learn to contribute to open-source software.
+
+\subsection{Teaching Fellow, Harvard University}
+\cvitem{Falls 2021-2023}{\textbf{How Music Works: Engineering the Acoustical World}}
+How does Shazam know what song is playing? Why do some rooms have better acoustics than others? How and why do singers harmonize? Do high-end musical instruments sound better than cheap ones? How do electronic synthesizers work? What processes are common in designing a device and composing a piece of music? How is music stored and manipulated in a digital form? This class explores these and related themes in an accessible way for all concentrators, regardless of technical background. The class is driven by hands-on projects to enhance your technical literacy, a critical skill for anyone designing solutions to today’s most pressing and complex issues. The projects are designed so that the creativity of students in all fields will have a role to play. Lectures, demonstrations, and guest lecturers/performers are integrated into the class to build foundational knowledge and to inspire. We will also explore wider social and historical themes related to music and acoustics. The class is approached from an engineering perspective, using music and musical instruments as the framework to introduce a broad array of concepts in physics, mathematics, and engineering. Requires no previous exposure to physics or calculus beyond the high school level.
+
+\cvitem{2020}{Undergraduate Mentoring Certification, Faculty of Arts \& Science, Division of Science}
+\subsection{Teaching Assistant, University of Pennsylvania}
+\cvitem{Fall 2017}{\textbf{Differential Equations \& Linear Algebra}}
+This course is about linear algebra and systems of differential equations. The linear algebra part of the course begins with matrices and solving linear equations and then has to do with vector spaces in general and linear transformations between them. The topics in differential equations include higher order single variable equations and systems of linear ordinary differential equations. The goal is to enable everyone taking the course to use these tools accurately, efficiently and flexibly. The engineering section of math 240 will emphasize current applications of the theory to communication, optimization, and modeling the behavior of complicated systems.
+
+\cvitem{Fall 2016 \\ \& 2017}{\textbf{Bioengineering Signals \& Systems}}
+Properties of signals and systems; Examples of biological and biomedical signal and systems; Signal operations, continuous and discrete signals; Linear, time invariant systems; Time domain analysis; Systems characterized by linear constant-coefficient differential equations; Fourier analysis with applications to biomedical signals and systems; Introduction to filtering; Sampling and the sampling theorem. Examples vary from year to year, but usually include signals such as the ECG and blood pressure wave, principles of signal coding in the auditory system and cochlear implants, and simple applications in biomedical imaging.
+
+
+\section{Software}
+\subsection{\textit{FSuB-Extractor}}
+\cvitem{(Python/Bash)}{\url{https://github.com/smeisler/fsub_extractor}}
+This is a flexible open-source software toolbox for finding components of white matter bundles that connect to functional regions of interest. Studying these \textbf{F}unctional \textbf{Su}b-\textbf{B}undles (FSuBs) could lead to more precise studies relating brain structure, function, and behavior.
+%\cvitem{2020}{Undergraduate Mentoring Certification, Faculty of Arts \& Science, Division of Science}
+%\subsection{Teaching Assistant, University of Pennsylvania}
+%\cvitem{Fall 2017}{Differential Equations \& Linear Algebra}
+%\cvitem{Fall 2016 \\ \& 2017}{Bioengineering Signals \& Systems}
+
+\section{DEJI Experience}
+\cvitem{2024}{University of Rhode Island Diversity and Inclusion Badge Program}
+
+\clearpage
+\end{document}

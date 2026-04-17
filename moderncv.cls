@@ -103,6 +103,7 @@
 \urlstyle{tt}
 \AtEndPreamble{
   \pagenumbering{arabic}% has to be issued before loading hyperref, as to set \thepage and hence to avoid hyperref issuing a warning and setting pdfpagelabels=false
+  %\RequirePackage[]{hyperref}
   \RequirePackage[unicode]{hyperref}% unicode is required for unicode pdf metadata
   \hypersetup{
     breaklinks,
@@ -259,6 +260,7 @@
       \ifthenelse{\equal{#1}{linkedin}}     {\collectionadd[linkedin]{socials}     {\protect\httpslink[#3]{www.linkedin.com/in/#3}}}               {}%
       \ifthenelse{\equal{#1}{xing}}         {\collectionadd[xing]{socials}         {\protect\httpslink[#3]{www.xing.com/profile/#3}}}              {}%
       \ifthenelse{\equal{#1}{twitter}}      {\collectionadd[twitter]{socials}      {\protect\httpslink[#3]{twitter.com/#3}}}                       {}%
+      \ifthenelse{\equal{#1}{mastodon}}     {\collectionadd[mastodon]{socials}     {\protect\httpslink[#3]{#3}}}                                   {}%
       \ifthenelse{\equal{#1}{github}}       {\collectionadd[github]{socials}       {\protect\httpslink[#3]{github.com/#3}}}                        {}%
       \ifthenelse{\equal{#1}{gitlab}}       {\collectionadd[gitlab]{socials}       {\protect\httpslink[#3]{gitlab.com/#3}}}                        {}%
       \ifthenelse{\equal{#1}{stackoverflow}}{\collectionadd[stackoverflow]{socials}{\protect\httpslink[#3]{stackoverflow.com/users/#3}}}           {}%
@@ -312,6 +314,7 @@
 \newcommand*{\linkedinsocialsymbol}     {}
 \newcommand*{\xingsocialsymbol}         {}
 \newcommand*{\twittersocialsymbol}      {}
+\newcommand*{\mastodonsocialsymbol}     {}
 \newcommand*{\githubsocialsymbol}       {}
 \newcommand*{\gitlabsocialsymbol}       {}
 \newcommand*{\stackoverflowsocialsymbol}{}
@@ -742,6 +745,5 @@
 
 
 \endinput
-
 
 %% end of file `moderncv.cls'.
