@@ -1,4 +1,4 @@
-\documentclass[12pt,legalpaper,sans]{moderncv} %a4paper
+\documentclass[12pt,legalpaper,sans]{vendor/moderncv/moderncv} %a4paper
 % SET UP BOLD NAME %
 \usepackage{xstring}
 \usepackage{etoolbox}
@@ -64,7 +64,7 @@
 \fi
 
 % Social icon overrides (prefer official brand icons if available)
-\IfFileExists{fontawesome7.sty}{\usepackage{fontawesome7}}{}
+\IfFileExists{assets/fonts/fontawesome7/fontawesome7.sty}{\usepackage{assets/fonts/fontawesome7/fontawesome7}}{}
 \definecolor{xbrand}{HTML}{000000}
 \definecolor{blueskybrand}{HTML}{1185FE}
 \makeatletter
@@ -92,7 +92,7 @@
 %\social[mastodon]{mastodon.online/@smeisler}                             % optional, remove / comment the line if not wanted
 \social[github]{Smeisler}                              % optional, remove / comment the line if not wanted
 %\social[gitlab]{jdoe}                              % optional, remove / comment the line if not wanted
-\photo[70pt][0.4pt]{ny_pic_head.png}                       
+\photo[70pt][0.4pt]{assets/images/ny_pic_head.png}
 %\quote{}                                 % optional, remove / comment the line if not wanted
 
 % bibliography adjustments (only useful if you make citations in your resume, or print a list of publications using BibTeX)
