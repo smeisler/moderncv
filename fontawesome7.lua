@@ -13,15 +13,15 @@
 -- The Current Maintainer of this work is Daniel Nagel
 --
 
-function fontawesome6_analyze_current_font(fontid)
+function fontawesome7_analyze_current_font(fontid)
   for name, value in pairs(font.getfont(fontid).resources.unicodes) do
     tex.sprint(
       luatexbase.catcodetables.expl,
       "\\exp_args:NNc\\tex_global:D\\tex_chardef:D{c__fontawesome_slot_" .. name .. '_char}' .. value .. '\\scan_stop:')
     tex.sprint(
       luatexbase.registernumber("CatcodeTableExpl"),
-      "\\cs_gset_protected:Npn"
-        .. string.gsub('\\fa-' .. name, '-(%w)', string.upper)
+      "\\cs_gset_protected:cpn"
+        .. string.gsub('{fa-' .. name .. "}", '-(%w)', string.upper)
         .. "{\\faPreselectedIcon{" .. name .. "}}")
   end
 end

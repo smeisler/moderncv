@@ -13,18 +13,18 @@
 % The Current Maintainer of this work is Daniel Nagel
 %
 \RequirePackage{expl3}
-\ProvidesExplPackage{fontawesome6}{2025/09/16}{6.7.2-3}{Font Awesome 6}
+\ProvidesExplPackage{fontawesome7}{2025/11/02}{7.1.0-1}{Font Awesome 7}
 
-\msg_new:nnnn{fontawesome6}{incompatible-version}
+\msg_new:nnnn{fontawesome7}{incompatible-version}
   {Incompatible~version~of~Font~Awesome~already~loaded}
-  {You~tried~to~load~the~fontawesome6~package~but~there~are~already~some~icons~
+  {You~tried~to~load~the~fontawesome7~package~but~there~are~already~some~icons~
     from~Font~Awesome~defined~in~your~document.~This~probably~means~that~a~
     package~for~another~version~of~Font~Awesome~(likely~the~fontawesome~package~
     for~Font~Awesome~5)~is~already~loaded.~Loading~multiple~versions~is~not~
     supported.~Please~remove~all~but~one~version~of~Font~Awesome~from~your~
     document.}
-\AddToHook{package/fontawesome/before}{\msg_error:nn {fontawesome6} {incompatible-version}}
-\cs_if_free:NF \faHome {\msg_error:nn {fontawesome6} {incompatible-version}}
+\AddToHook{package/fontawesome/before}{\msg_error:nn {fontawesome7} {incompatible-version}}
+\cs_if_free:NF \faHome {\msg_error:nn {fontawesome7} {incompatible-version}}
 
 \RequirePackage{l3keys2e}
 
@@ -33,7 +33,7 @@
   \str_set:Nn\l_fontawesome_style_str
 }
 
-\keys_define:nn{fontawesome6}
+\keys_define:nn{fontawesome7}
 {
   pro .value_forbidden:n = true,
   pro .tl_set:N = \c__fontawesome_kind_tl,
@@ -45,9 +45,9 @@
   fixed .default:n = true,
   style .code:n = { \fontawesome_set_style:n{#1} }
 }
-\keys_set:nn{fontawesome6}{free}
+\keys_set:nn{fontawesome7}{free}
 
-\ProcessKeysOptions{fontawesome6}
+\ProcessKeysOptions{fontawesome7}
 
 \str_if_empty:NT \l_fontawesome_style_str {
   \fontawesome_set_style:n{solid}
@@ -59,24 +59,24 @@
   {luatex}{}
   {xetex}{}
 }{
-  \RequirePackage{fontawesome6-utex-helper}
+  \RequirePackage{fontawesome7-utex-helper}
 }{
-  \RequirePackage{fontawesome6-generic-helper}
+  \RequirePackage{fontawesome7-generic-helper}
 }
 
-\msg_new:nnnn{fontawesome6}{icon-not-found}
+\msg_new:nnnn{fontawesome7}{icon-not-found}
   {The~requested~icon~#1~was~not~found.}
-  {Maybe~you~mistyped~the~icon~name~or~you~are~using~the~wrong~version~of~Font~Awesome~6.~
+  {Maybe~you~mistyped~the~icon~name~or~you~are~using~the~wrong~version~of~Font~Awesome~7.~
     Please~check~the~Font~Awesome~Cheatsheet~to~verify~the~spelling~of~#1.~
-    If~you~want~to~use~a~Pro~icon,~you~need~to~have~Font~Awesome~6~Pro~installed~and~
+    If~you~want~to~use~a~Pro~icon,~you~need~to~have~Font~Awesome~7~Pro~installed~and~
     use~XeLaTeX~or~LuaLaTeX.~Then~you~can~activate~Pro~with~the~[pro]~option.~
-    If~you~use~XeLaTeX~or~LuaLaTeX,~you~can~also~try~updating~the~Font~Awesome~6~font~files~
+    If~you~use~XeLaTeX~or~LuaLaTeX,~you~can~also~try~updating~the~Font~Awesome~7~font~files~
     to~make~icons~of~newer~versions~of~Font~Awesome~available.}
-\msg_new:nnnn{fontawesome6}{style-substitution}
+\msg_new:nnnn{fontawesome7}{style-substitution}
   {The~requested~icon~#1~has~been~replaced~by~the~solid~version}
   {The~icon~#1~is~not~available~in~the~style~#2.~The~solid~version~will~be~used~instead.~
-    To~use~a~#2~style~#1~icon,~you~probably~need~Font~Awesome~6~Pro.~
-    To~use~Pro,~you~need~to~have~Font~Awesome~6~Pro~installed~and~
+    To~use~a~#2~style~#1~icon,~you~probably~need~Font~Awesome~7~Pro.~
+    To~use~Pro,~you~need~to~have~Font~Awesome~7~Pro~installed~and~
     use~XeLaTeX~or~LuaLaTeX.~Then~you~can~activate~Pro~with~the~[pro]~option.}
 
 \NewDocumentCommand\faPreselectedIcon{m O{\str_use:N\l_fontawesome_style_str}}{

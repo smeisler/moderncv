@@ -12,11 +12,11 @@
 % 
 % The Current Maintainer of this work is Daniel Nagel
 %
-\@ifpackageloaded{fontawesome6}{}{\PackageError{fontawesome6-utex-helper}{This package should not be loaded individually. Load fontawesome6 instead.}{}}
+\@ifpackageloaded{fontawesome7}{}{\PackageError{fontawesome7-utex-helper}{This package should not be loaded individually. Load fontawesome7 instead.}{}}
 \@ifpackagelater{expl3}{2017/05/26}{}{
   \def\faV@extractversion#1 #2\|{#1}
-  \PackageError{fontawesome6}{expl3 package version too old}{%
-    The fontawesome6 package requires an up-to-date version of the\MessageBreak
+  \PackageError{fontawesome7}{expl3 package version too old}{%
+    The fontawesome7 package requires an up-to-date version of the\MessageBreak
     package expl3, which is part of the l3kernel bundle. I could only\MessageBreak
     find version \expandafter\expandafter\expandafter\faV@extractversion\csname ver@expl3.sty\endcsname{} \|, so I will exit now.
     To fix this error,\MessageBreak you have to update l3kernel to version 2017-05-26 or later.
@@ -24,16 +24,16 @@
   \endinput
 }
 
-\ProvidesExplPackage{fontawesome6-utex-helper}{2025/09/16}{6.7.2-3}{uTeX helper for fontawesome6}
+\ProvidesExplPackage{fontawesome7-utex-helper}{2025/11/02}{7.1.0-1}{uTeX helper for fontawesome7}
 
 \sys_if_engine_luatex:TF{
   \RequirePackage{luatexbase}
-  \directlua{require('fontawesome6')}
+  \directlua{require('fontawesome7')}
 
   \cs_new:Nn\__fontawesome_analyze_font:nn{
     \group_begin:
-      \usefont{TU}{fontawesome6#1}{#2}{n}
-      \lua_now:e{fontawesome6_analyze_current_font(\tex_fontid:D\tex_font:D)}
+      \usefont{TU}{fontawesome7#1}{#2}{n}
+      \lua_now:e{fontawesome7_analyze_current_font(\tex_fontid:D\tex_font:D)}
     \group_end:
   }
   \cs_set:Npn \__fontawesome_glyphindex:n {
@@ -43,7 +43,8 @@
 }{
   \cs_new:Nn\__fontawesome_analyze_font:nn{
     \group_begin:
-      \usefont{TU}{fontawesome6#1}{#2}{n}
+      \usefont{TU}{fontawesome7#1}{#2}{n}
+      \int_step_inline:nnn {`1} {`9} {\char_set_catcode_letter:n {##1}}
       \int_step_inline:nnnn{67}1{\tex_XeTeXcountglyphs:D \tex_font:D - 1} {
         \tl_set:No\l_tmpa_tl{\tex_XeTeXglyphname:D \tex_font:D ##1}
         \tl_set:NV\l_tmpb_tl\l_tmpa_tl
@@ -70,7 +71,7 @@
   \group_begin:
     \usefont
       {TU}
-      {fontawesome6\c__fontawesome_kind_tl}
+      {fontawesome7\c__fontawesome_kind_tl}
       {#1}
       {n}
     \bool_set:Nn \l__fontawesome_duotone_bool {
@@ -94,15 +95,15 @@
       \selectfont
       \int_set:Nn\l_tmpa_int{\__fontawesome_glyphindex:n{#2}}
       \int_compare:nNnTF{\l_tmpa_int}={0}{
-        \fontfamily{fontawesome6brands}
+        \fontfamily{fontawesome7brands}
         \fontseries{regular}
         \selectfont
         \int_set:Nn\l_tmpa_int{\__fontawesome_glyphindex:n{#2}}
         \int_compare:nNnT{\l_tmpa_int}={0}{
-          \msg_error:nnxx{fontawesome6}{icon-not-found}{#2}{#1}
+          \msg_error:nnxx{fontawesome7}{icon-not-found}{#2}{#1}
         }
       }{
-        \msg_warning:nnxx{fontawesome6}{style-substitution}{#2}{#1}
+        \msg_warning:nnxx{fontawesome7}{style-substitution}{#2}{#1}
       }
     }
     \bool_if:NTF\c__fontawesome_fixed_bool{
