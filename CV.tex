@@ -30,7 +30,12 @@
 \defbibfilter{sub_co}{keyword=submitted and keyword=coauthor}
 
 \moderncvstyle{casual}
-\moderncvcolor{burgundy}                               % color options 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'
+\moderncvcolor{burgundy}                               % 
+% Ensure section headers and photo frame always follow \moderncvcolor{...}.
+\colorlet{sectioncolor}{color1}
+\colorlet{subsectioncolor}{color1}
+\colorlet{bodyrulecolor}{color1}
+\colorlet{pictureframecolor}{color1}
 
 % character encoding
 %\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
@@ -58,14 +63,17 @@
   \usepackage{lmodern}
 \fi
 
-% Social icon overrides (X/Twitter and optional Bluesky icon if available)
+% Social icon overrides (prefer official brand icons if available)
+\IfFileExists{fontawesome6.sty}{\usepackage{fontawesome6}}{}
+\definecolor{xbrand}{HTML}{000000}
+\definecolor{blueskybrand}{HTML}{1185FE}
 \makeatletter
 \@ifundefined{faXTwitter}
   {\renewcommand*{\twittersocialsymbol}{{\small\textbf{X}}~}}
-  {\renewcommand*{\twittersocialsymbol}{{\small\faXTwitter}~}}
+  {\renewcommand*{\twittersocialsymbol}{{\color{xbrand}\small\faXTwitter}~}}
 \@ifundefined{faBluesky}
   {\newcommand*{\blueskysocialsymbol}{{\small\textbf{B}}~}}
-  {\newcommand*{\blueskysocialsymbol}{{\small\faBluesky}~}}
+  {\newcommand*{\blueskysocialsymbol}{{\color{blueskybrand}\small\faBluesky}~}}
 \makeatother
 
 % personal data

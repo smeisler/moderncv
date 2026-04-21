@@ -14,12 +14,22 @@
 
 
 \ifxetexorluatex
-  \RequirePackage{moderncviconsawesome}
-  \RequirePackage{moderncviconsacademic}
+  \typeout{^^Jmoderncv: using marvosym icons for compatibility in this local CV setup.^^J}
+  \RequirePackage{moderncviconsmarvosym}
+  \IfFileExists{academicons.sty}{%
+    \RequirePackage{moderncviconsacademic}
+  }{%
+    \typeout{^^Jmoderncv: academicons.sty not found. Academic icon overrides disabled.^^J}
+  }%
 \else
   \typeout{^^Jmoderncv: academicons requires XeTeX/LuaTeX to work. Using alternatives.^^J}
   \ifpdftex
-    \RequirePackage{moderncviconsawesome}
+    \IfFileExists{fontawesome6.sty}{%
+      \RequirePackage{moderncviconsawesome}
+    }{%
+      \typeout{^^Jmoderncv: fontawesome6.sty not found. Falling back to marvosym icons.^^J}
+      \RequirePackage{moderncviconsmarvosym}
+    }%
   \else
     \RequirePackage{moderncviconsmarvosym}
   \fi
