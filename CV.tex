@@ -24,6 +24,10 @@
 \usepackage[backend=biber, style=nature, sorting=none, maxbibnames=99,defernumbers=true]{biblatex}
 %\usepackage{multibib}
 \addbibresource{publications.bib}
+\defbibfilter{pub_first}{keyword=published and keyword=firstauthor}
+\defbibfilter{pub_co}{keyword=published and keyword=coauthor}
+\defbibfilter{sub_first}{keyword=submitted and keyword=firstauthor}
+\defbibfilter{sub_co}{keyword=submitted and keyword=coauthor}
 
 \moderncvstyle{casual}
 \moderncvcolor{burgundy}                               % color options 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'
@@ -57,7 +61,7 @@
 % personal data
 \name{Steven Lee}{Meisler}
 \title{Curriculum Vitae}                               % optional, remove / comment the line if not wanted
-\address{Richards Building, 5th Floor. 3700 Hamilton Walk.}{Philadelphia, PA 19103}{USA}% optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
+\address{Richards Building, 5th Floor. 3700 Hamilton Walk.}{Philadelphia, PA 19104}{USA}% optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
 %\phone[mobile]{+1~(234)~567~890}                   % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
 \email{Steven.Meisler@pennmedicine.upenn.edu}                               % optional, remove / comment the line if not wanted
 \homepage{www.stevenmeisler.com}                         % optional, remove / comment the line if not wanted
@@ -89,8 +93,7 @@
 \makeauthorsbold{Steven,Meisler}
 % ---------------------------------------------------------
 \makecvtitle
-Steven is a developmental neuroscientist whose graduate work used multimodal neuroimaging (fMRI and DWI) and psychocognitive evaluations to study the neural bases of reading abilities, disabilities, and intervention in children. As a postdoctoral fellow at the University of Pennsylvania, he is using large datasets and cutting-edge techniques to investigate white matter developmental trajectories in infancy. He is broadly interested in characterizing early life white matter trajectories, and quantifying the effect of psychiatric risk on white matter maturation. Steven received his bachelor’s and master's degrees in bioengineering from the University of Pennsylvania in 2017 and 2018, and his PhD from Harvard University in Speech and Hearing Bioscience and Technology in May 2024.
-
+Steven is a developmental neuroinformaticist studying white matter maturation and its role in emerging psychopathology. His graduate work integrated multimodal neuroimaging (fMRI, DWI) with psychocognitive assessments to investigate the neural bases of reading ability, disability, and intervention in children. As a postdoctoral fellow at the University of Pennsylvania, he leverages large-scale datasets and advanced analytic methods to characterize white matter developmental trajectories across infancy and adolescence. Beyond his primary research, Steven is an active advocate for open and reproducible science. He moderates the NeuroStars.org support forum and teaches researchers how to process neuroimaging data using open-source, state-of-the-art tools. He received his bachelor’s and master’s degrees in bioengineering from the University of Pennsylvania (2017, 2018) and his PhD in Speech and Hearing Bioscience and Technology from Harvard University (2024). He plans to enter the tenure-track academic job market in 2027.
 \section{Education}
 \cventry{2019--2024}{PhD in Speech and Hearing Bioscience and Technology}{Harvard University, Division of Medical Sciences}{Cambridge, MA}{}{Secondary Field in Mind, Brain \& Behavior \\ Dissertation: "White Matter Structural Correlates of Reading Abilities, Disabilities, and Intervention" - Advisor: John Gabrieli, PhD}
 \cventry{2017--2018}{MSE in Bioengineering}{University of Pennsylvania}{Philadelphia, PA}{\textit{3.79/4}}{Thesis: "Evaluating the Effect of Intracranial EEG Data Cleaning on Univariate and Multivariate Classifier Performance" - Advisor: Michael Kahana, PhD}
@@ -121,21 +124,21 @@ Steven is a developmental neuroscientist whose graduate work used multimodal neu
 \end{itemize}
 }
 
-\cventry{2018--2019}{Clinical Research Coordinator}{Laboratory for NeuroImaging of Coma and Consciousness}{Massachusetts General Hospital (PI: Brian Edlow, MD)}{}{
+%\cventry{2018--2019}{Clinical Research Coordinator}{Laboratory for NeuroImaging of Coma and Consciousness}{Massachusetts General Hospital (PI: Brian Edlow, MD)}{}{
 %Detailed achievements:
-\begin{itemize}
-\item Used machine learning to test if EEG and MRI biometrics in the ICU can predict long-term recovery outcomes from traumatic brain injury.
-\item Was responsible for screening patients, as well as submitting and maintaining regulatory documentation.
-\end{itemize}
-}
+%\begin{itemize}
+%\item Used machine learning to test if EEG and MRI biometrics in the ICU can predict long-term recovery outcomes from traumatic brain injury.
+%\item Was responsible for screening patients, as well as submitting and maintaining regulatory documentation.
+%\end{itemize}
+%}
 
-\cventry{2017--2018}{Graduate Research Assistant}{Computational Memory Lab}{University of Pennsylvania (PI: Michael Kahana, PhD)}{}{
+%\cventry{2017--2018}{Graduate Research Assistant}{Computational Memory Lab}{University of Pennsylvania (PI: Michael Kahana, PhD)}{}{
 %Detailed achievements:
-\begin{itemize}
-\item Researched efficacy of various data preprocessing methods on classification of neural activity during memory tasks
-\item Created a Python‐based GUI that visualizes and annotates EEG signals for analysis in a multi‐site DARPA‐funded clinical study
-\end{itemize}
-}
+%\begin{itemize}
+%\item Researched efficacy of various data preprocessing methods %on classification of neural activity during memory tasks
+%\item Created a Python‐based GUI that visualizes and annotates EEG signals for analysis in a multi‐site DARPA‐funded clinical study
+%\end{itemize}
+%}
 % ---------------------------------------------------------
 %\newpage
 
@@ -148,9 +151,11 @@ Steven is a developmental neuroscientist whose graduate work used multimodal neu
 
 \nocite{*}
 \textit{\\ * Denotes Equal Authorship}
-\printbibliography[title=Published Articles, type=article, keyword={published}, resetnumbers=true]
-%\printbibliography[title=Under Review, type=article, keyword={submitted}, resetnumbers=true]
-\printbibliography[title=Articles in Review / Revision, type=article, keyword={submitted}, resetnumbers=true]
+\printbibliography[title=Published Articles (First Author), type=article, filter=pub_first, resetnumbers=true]
+\printbibliography[title=Published Articles (Co-Author), type=article, filter=pub_co, resetnumbers=true]
+\newpage
+\printbibliography[title=Articles in Review / Revision (First Author), type=article, filter=sub_first, resetnumbers=true]
+\printbibliography[title=Articles in Review / Revision (Co-Author), type=article, filter=sub_co, resetnumbers=true]
 % ---------------------------------------------------------
 \section{Funding}
 \subsection{External}
@@ -162,7 +167,7 @@ Steven is a developmental neuroscientist whose graduate work used multimodal neu
 \cventry{8/2019 -- 8/2022}{Training in Speech and Hearing Sciences}{}{\newline Funding Agency: NIH, NIDCD (type: T32; DC000038)}{Role: Trainee}{(PI: Gwenaelle S. Géléoc)}
 % ---------------------------------------------------------
 \printbibliography[title=Invited Talks, type=misc, resetnumbers=true] 
-\printbibliography[title=Poster Presentations, type=unpublished, resetnumbers=true] 
+%\printbibliography[title=Poster Presentations, type=unpublished, resetnumbers=true] 
 
 % Publications from a BibTeX file using the multibib package
 %\section{Publications}
@@ -192,18 +197,9 @@ Steven is a developmental neuroscientist whose graduate work used multimodal neu
 % ---------------------------------------------------------
 
 \section{Skills}
-\cvitem{}{1 - Basic Knowledge; 5 - Expert}
-\cvskillhead[-0.1em][Level][Skill][][Comments]
-\cvskillentry*{Computing:}{5}{Python}{}{Comfortable with data analysis, Jupyter, and Python-based software development}
-\cvskillentry{}{4}{MATLAB}{}{Can use MATLAB if required, but I prefer Python and terminal tools}
-\cvskillentry{}{4}{Bash / Terminal}{}{Proficient in scripting and parallelizing jobs with HPC schedulers}
-\cvskillentry{}{3}{R}{}{It's a work in progress...}
-\cvskillentry{}{4}{\LaTeX}{}{Prefer to write papers using either Overleaf or Google Docs (+Zotero)}
-\cvskillentry*[1em]{Methods}{5}{DWI}{}{Familiar with basic tensor and advanced diffusion modeling approaches}
-\cvskillentry{}{4}{fMRI}{}{Familiar with several univariate and multivariate analytical approaches}
-\cvskillentry{}{2}{EEG Time Series Analysis}{}{Master's thesis heavily employed ML-based analysis of continuous time-frequency decomposition}
-\cvitem{}{\textbf{Other Skills}}
-\cvdoubleitem{\textbf{Study\\Coordination}}{EPIC, REDCap, IRB}{\textbf{Open Science}}{GitHub, BIDS-apps}
+\cvitem{\textbf{Computing}}{Python, MATLAB, Bash / Terminal, R, \LaTeX}
+\cvitem{\textbf{Methods}}{DWI, fMRI, EEG Time Series Analysis}
+\cvitem{\textbf{Other Skills}}{EPIC, REDCap, IRB, GitHub, BIDS-apps}
 
 % ---------------------------------------------------------
 \section{Verified Peer Reviews}
@@ -216,7 +212,7 @@ Steven is a developmental neuroscientist whose graduate work used multimodal neu
 %\cvitem{-}{\textbf{\textit{Brain Research Bulletin}}}
 %\cvitem{-}{\textbf{\textit{Frontiers in Neuroscience}}}
 % ---------------------------------------------------------
-
+\newpage
 \section{Professional \& Service Affiliations}
 \cvitem{2025--Present}{Trainee Committee, Flux Congress}
 \cvitem{2025--Present}{Community Liaison, Open Science Special Interest Group, Organization for Human Brain Mapping}
