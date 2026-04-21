@@ -1,5 +1,5 @@
 %% start of file `moderncviconstikz.sty'.
-%% Copyright 2013-2015 Xavier Danaux (xdanaux@gmail.com), 2020-2021 moderncv maintainers (github.com/moderncv).
+%% Copyright 2013-2015 Xavier Danaux (xdanaux@gmail.com), 2020-2026 moderncv maintainers (github.com/moderncv).
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License version 1.3c,
@@ -10,14 +10,32 @@
 %                identification
 %-------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{moderncviconstikz}[2021-12-16 v2.3.0 modern curriculum vitae and letter icons: tickz]
+\ProvidesPackage{moderncviconstikz}[2026-01-31 v2.5.1 modern curriculum vitae and letter icons: tickz]
 
 
 %-------------------------------------------------------------------------------
 %                required packages
 %-------------------------------------------------------------------------------
 \RequirePackage{tikz}
+\usetikzlibrary{babel}
 \RequirePackage{etoolbox}
+\RequirePackage{xcolor}
+
+%-------------------------------------------------------------------------------
+%                set colors
+%-------------------------------------------------------------------------------
+\usepackage{moderncvcolors}
+
+\providecolor{linkedin}{named}{default-socialicon-color}
+\providecolor{twitter}{named}{default-socialicon-color}
+\providecolor{github}{named}{default-socialicon-color}
+\providecolor{gitlab}{named}{default-socialicon-color}
+\providecolor{skype}{named}{default-socialicon-color}
+\providecolor{googlescholar}{named}{default-socialicon-color}
+\providecolor{matrix}{named}{default-socialicon-color}
+\providecolor{codeberg}{named}{default-socialicon-color}
+\providecolor{simplex}{named}{default-socialicon-color}
+\providecolor{threema}{named}{default-socialicon-color}
 
 
 %-------------------------------------------------------------------------------
@@ -29,7 +47,7 @@
     \protect\raisebox{-0.165em}{
     \protect\begin{tikzpicture}[x=0.08em, y=0.08em, xscale=0.25, yscale=-0.25, inner sep=0pt, outer sep=0pt]
       \protect\begin{scope}[cm={{0.60,0.0,0.0,0.60,(346.39,123.07)}}]
-        \protect\path[fill=color2]
+        \protect\path[fill=linkedin]
           (381,202) -- (434,202) .. controls (439,202) and (442,205) ..
           (442,210) -- (442,264) .. controls (442,268) and (439,272) ..
           (434,272) -- (381,272) .. controls (376,272) and (372,268) ..
@@ -74,7 +92,7 @@
   \renewcommand*{\twittersocialsymbol} {
     \protect\raisebox{0em}{%
     \protect\begin{tikzpicture}[x=0.08em, y=0.08em, xscale=0.005, yscale=-0.005, inner sep=0pt, outer sep=0pt]
-      \protect\path[fill=color2]
+      \protect\path[fill=twitter]
         (2000, 192) .. controls (1926, 225) and (1847, 247) ..
         (1764, 257) .. controls (1849, 206) and (1914, 126) ..
         (1945,  30) .. controls (1865,  77) and (1778, 111) ..
@@ -106,7 +124,7 @@
     \protect\raisebox{-0.15em} {
     \protect\begin{tikzpicture}[x=0.08em, y=0.08em, xscale=0.25, yscale=-0.25, inner sep=0pt, outer sep=0pt]
       \protect\begin{scope}[shift={(507,387)}]
-        \protect\path[fill=color2]
+        \protect\path[fill=github]
           (117, 60) .. controls (117, 71) and (108, 81) ..
           ( 96, 81) .. controls ( 85, 81) and ( 75, 71) ..
           ( 75, 60) .. controls ( 75, 48) and ( 85, 39) ..
@@ -118,7 +136,7 @@
           ( 75, 60) .. controls ( 75, 48) and ( 85, 39) ..
           ( 96, 39) .. controls (108, 39) and (117, 48) ..
           (117, 60) -- cycle;
-        \protect\path[fill=color2, nonzero rule]
+        \protect\path[fill=github, nonzero rule]
           (103, 45) .. controls (103, 45) and (101, 46) ..
           (101, 47) -- (100, 47) --
           ( 99, 47) .. controls ( 99, 47) and ( 98, 47) ..
@@ -217,8 +235,8 @@
     \protect\raisebox{-0.12em}{
       \protect\begin{tikzpicture}[x=0.11em, y=0.11em, xscale=0.015, yscale=-0.015, inner sep=0pt, outer sep=0pt]
       \protect\begin{scope}[shift={(507,387)}]
-      \protect\path[fill=color2,line width=0.057pt]
-      (105.2000,24.9000) .. controls (102.1000,16.0000) and (89.5000,16.0000) .. 
+      \protect\path[fill=gitlab,line width=0.057pt]
+      (105.2000,24.9000) .. controls (102.1000,16.0000) and (89.5000,16.0000) ..
       (86.3000,24.9000) -- (29.8000,199.7000) -- (161.7000,199.7000) .. controls
       (161.7000,199.7000) and (105.2000,24.9000) .. (105.2000,24.9000) -- cycle
       (0.9000,287.7000) .. controls (-1.7000,295.7000) and (1.2000,304.6000) ..
@@ -238,7 +256,7 @@
   \protect\raisebox{-0.15em}{
     \protect\begin{tikzpicture}[y=0.08em, x=0.08em, xscale=0.020, yscale=-0.020, inner sep=0pt, outer sep=0pt]
       \protect\begin{scope}[shift={(507,387)}]
-        \protect\path[fill=color2,even odd rule]
+        \protect\path[fill=skype,even odd rule]
           (487.6550,288.9690) .. controls (489.0610,278.5690) and (489.8700,267.9960) ..
           (489.8700,257.2330) .. controls (489.8700,128.0770) and (384.5990,23.3610) ..
           (254.7670,23.3610) .. controls (241.8630,23.3610) and (229.2120,24.4210) ..
@@ -269,33 +287,12 @@
   ~}
 }{}\par
 
-\ifdefempty{\gitlabsocialsymbol} {
-  \renewcommand*{\gitlabsocialsymbol} {
-    \protect\raisebox{-0.12em}{
-    \protect\begin{tikzpicture}[x=0.11em, y=0.11em, xscale=0.015, yscale=-0.015, inner sep=0pt, outer sep=0pt]
-    \protect\begin{scope}[shift={(507,387)}]
-    \protect\path[fill=color2,line width=0.057pt]
-    (105.2000,24.9000) .. controls (102.1000,16.0000) and (89.5000,16.0000) .. 
-    (86.3000,24.9000) -- (29.8000,199.7000) -- (161.7000,199.7000) .. controls
-    (161.7000,199.7000) and (105.2000,24.9000) .. (105.2000,24.9000) -- cycle
-    (0.9000,287.7000) .. controls (-1.7000,295.7000) and (1.2000,304.6000) ..
-    (8.0000,309.7000) -- (255.9000,493.7000) -- (29.7000,199.7000) --	cycle
-    (161.7000,199.7000) -- (161.7000,199.7000) -- (256.0000,493.7000) -- (350.3000,199.7000) -- cycle
-    (511.1000,287.7000) -- (482.3000,199.7000) -- (256.0000,493.7000) --
-    (503.9000,309.7000) .. controls (510.8000,304.6000) and (513.6000,295.7000) ..
-    (511.1000,287.7000) -- cycle(425.7000,24.9000) .. controls (422.6000,16.0000)
-    and (410.0000,16.0000) .. (406.8000,24.9000) -- (350.2000,199.7000) -- (482.2000,199.7000) -- cycle;
-    \protect\end{scope}
-    \protect\end{tikzpicture}}
-  ~}
-}{}\par
-
 \ifdefempty{\googlescholarsocialsymbol} {
   \renewcommand*{\googlescholarsocialsymbol} {
     \protect\raisebox{-0.12em}{
     \protect\begin{tikzpicture}[y=2.0pt, x=2.0pt, yscale=-0.1, xscale=0.1, inner sep=0pt, outer sep=0pt]
     \protect\begin{scope}[shift={(507,387)}]
-    \protect\path[fill=color2] (25.0000,2.0000) .. controls (12.3095,2.0000) and (2.0000,12.3095)
+    \protect\path[fill=googlescholar] (25.0000,2.0000) .. controls (12.3095,2.0000) and (2.0000,12.3095)
 		.. (2.0000,25.0000) .. controls (2.0000,37.6905) and (12.3095,48.0000) ..
 		(25.0000,48.0000) .. controls (37.6905,48.0000) and (48.0000,37.6905) ..
 		(48.0000,25.0000) .. controls (48.0000,12.3095) and (37.6905,2.0000) ..
@@ -348,7 +345,7 @@
     \protect\raisebox{-0.12em}{
     \protect\begin{tikzpicture}[y=1.8pt, x=1.8pt, yscale=-0.15, xscale=0.15, inner sep=0pt, outer sep=0pt]
     \protect\begin{scope}[shift={(507,387)}]
-    \protect\path[fill=color2] 
+    \protect\path[fill=matrix]
       (0.9360,0.7320) .. controls (0.9360,10.9053) and (0.9360,21.0787) ..
       (0.9360,31.2520) .. controls (1.6673,31.2520) and (2.3987,31.2520) ..
       (3.1300,31.2520) .. controls (3.3452,32.0075) and (2.8778,32.0803) ..
@@ -390,76 +387,72 @@
   ~}
 }{}\par
 
-\ifdefempty{\signalsocialsymbol} {
-  \renewcommand*{\signalsocialsymbol} {
+\ifdefempty{\codebergsocialsymbol} {
+  \renewcommand*{\codebergsocialsymbol} {
     \protect\raisebox{-0.12em}{
-    \protect\begin{tikzpicture}[y=0.1pt, x=0.1pt, yscale=-0.13, xscale=0.13, inner sep=0pt, outer sep=0pt]
-    \protect\begin{scope}[shift={(507,387)}]
-    \protect\path[fill=color2] 
-      (430.1000,180.9000) -- (437.8000,211.9000) .. controls (407.6000,219.3000)
-      and (378.7000,231.3000) .. (352.1000,247.3000) -- (335.7000,220.0000) ..
-      controls (365.0000,202.3000) and (396.9000,189.1000) .. (430.1000,180.9000) --
-      cycle(593.9000,180.9000) -- (586.2000,211.9000) .. controls
-      (616.4000,219.3000) and (645.3000,231.3000) .. (671.9000,247.3000) --
-      (688.4000,219.9000) .. controls (659.0000,202.3000) and (627.2000,189.1000) ..
-      (593.9000,180.9000) -- cycle(220.0000,335.7000) .. controls
-      (202.3000,365.0000) and (189.1000,396.9000) .. (180.9000,430.1000) --
-      (211.9000,437.8000) .. controls (219.3000,407.6000) and (231.3000,378.7000) ..
-      (247.3000,352.1000) -- cycle(202.9000,512.0000) .. controls
-      (202.9000,496.5000) and (204.0000,481.0000) .. (206.4000,465.7000) --
-      (174.8000,460.9000) .. controls (169.7000,494.8000) and (169.7000,529.2000) ..
-      (174.8000,563.1000) -- (206.4000,558.3000) .. controls (204.1000,543.0000) and
-      (202.9000,527.5000) .. (202.9000,512.0000) -- cycle(688.3000,804.0000) --
-      (671.9000,776.6000) .. controls (645.3000,792.7000) and (616.5000,804.6000) ..
-      (586.3000,812.0000) -- (594.0000,843.0000) .. controls (627.2000,834.8000) and
-      (659.0000,821.7000) .. (688.3000,804.0000) -- cycle(821.1000,512.0000) ..
-      controls (821.1000,527.5000) and (820.0000,543.0000) .. (817.6000,558.3000) --
-      (849.2000,563.1000) .. controls (854.3000,529.2000) and (854.3000,494.8000) ..
-      (849.2000,460.9000) -- (817.6000,465.7000) .. controls (819.9000,481.0000) and
-      (821.1000,496.5000) .. (821.1000,512.0000) -- cycle(843.1000,593.8000) --
-      (812.1000,586.1000) .. controls (804.7000,616.3000) and (792.7000,645.2000) ..
-      (776.7000,671.8000) -- (804.1000,688.3000) .. controls (821.7000,659.0000) and
-      (834.9000,627.1000) .. (843.1000,593.8000) -- cycle(558.3000,817.6000) ..
-      controls (527.6000,822.2000) and (496.4000,822.2000) .. (465.7000,817.6000) --
-      (460.9000,849.2000) .. controls (494.8000,854.3000) and (529.2000,854.3000) ..
-      (563.1000,849.2000) -- cycle(760.8000,695.3000) .. controls
-      (742.4000,720.3000) and (720.3000,742.3000) .. (695.3000,760.7000) --
-      (714.3000,786.4000) .. controls (741.9000,766.1000) and (766.2000,741.9000) ..
-      (786.6000,714.4000) -- cycle(695.3000,263.2000) .. controls
-      (720.3000,281.6000) and (742.4000,303.7000) .. (760.8000,328.7000) --
-      (786.5000,309.5000) .. controls (766.2000,282.0000) and (741.9000,257.7000) ..
-      (714.5000,237.5000) -- cycle(263.2000,328.7000) .. controls
-      (281.6000,303.7000) and (303.7000,281.6000) .. (328.7000,263.2000) --
-      (309.5000,237.5000) .. controls (282.0000,257.8000) and (257.7000,282.1000) ..
-      (237.5000,309.5000) -- cycle(804.0000,335.7000) -- (776.6000,352.1000) ..
-      controls (792.7000,378.7000) and (804.6000,407.5000) .. (812.0000,437.7000) --
-      (843.0000,430.0000) .. controls (834.9000,396.8000) and (821.7000,365.0000) ..
-      (804.0000,335.7000) -- cycle(465.7000,206.4000) .. controls
-      (496.4000,201.8000) and (527.6000,201.8000) .. (558.3000,206.4000) --
-      (563.1000,174.8000) .. controls (529.2000,169.7000) and (494.8000,169.7000) ..
-      (460.9000,174.8000) -- cycle(279.6000,795.0000) -- (213.6000,810.4000) --
-      (229.0000,744.4000) -- (197.9000,737.1000) -- (182.5000,803.1000) .. controls
-      (180.0000,813.9000) and (183.2000,825.2000) .. (191.0000,833.0000) .. controls
-      (198.8000,840.8000) and (210.1000,844.0000) .. (220.9000,841.5000) --
-      (286.9000,826.4000) -- cycle(204.5000,708.5000) -- (235.6000,715.7000) --
-      (246.3000,669.9000) .. controls (230.8000,643.8000) and (219.2000,615.5000) ..
-      (211.9000,586.0000) -- (180.9000,593.7000) .. controls (187.9000,622.0000) and
-      (198.4000,649.2000) .. (212.3000,674.7000) -- cycle(353.7000,777.8000) --
-      (308.0000,788.5000) -- (315.2000,819.6000) -- (348.9000,811.8000) .. controls
-      (374.5000,825.7000) and (401.7000,836.3000) .. (430.0000,843.2000) --
-      (437.7000,812.2000) .. controls (408.3000,804.9000) and (380.1000,793.2000) ..
-      (354.0000,777.6000) -- cycle(512.0000,234.9000) .. controls
-      (411.2000,235.0000) and (318.3000,289.8000) .. (269.6000,378.0000) .. controls
-      (220.9000,466.2000) and (223.9000,574.0000) .. (277.6000,659.4000) --
-      (251.0000,773.1000) -- (364.7000,746.5000) .. controls (464.4000,809.3000) and
-      (592.9000,802.2000) .. (685.1000,728.8000) .. controls (777.3000,655.4000) and
-      (812.9000,531.7000) .. (774.0000,420.5000) .. controls (734.8000,309.2000) and
-      (629.8000,234.8000) .. (512.0000,234.9000) -- cycle;
+    \protect\begin{tikzpicture}[y=0.8pt, x=0.8pt, yscale=-1.0, xscale=1.0, inner sep=0pt, outer sep=0pt]
+    \protect\begin{scope}[shift={(507, 387)}]
+      \protect\path[scale=0.265, opacity=0.500, line cap=butt, line join=miter, line width=0.779pt, miter limit=2.00]
+      (11249.8942,-1872.9296)arc(269.285:169.240:0.201313 and 0.150) --
+      (11258.5852,-1839.4433)arc(66.699:32.084:23.067) --
+      (11250.0698,-1872.8557)arc(329.460:269.346:0.201313 and 0.150) -- cycle;
+
+      \protect\path[scale=0.265, fill=codeberg, line width=0.426pt]
+      (11249.3743,-1883.6959)arc(269.785:180.000:23.067)arc(180.001:147.920:23.067)
+      -- (11249.1480,-1873.2412)arc(209.929:330.071:0.360097 and 0.269) --
+      (11269.0053,-1848.3766)arc(32.082:-0.002:23.067)arc(360.000:270.000:23.067)arc(270.108:269.892:23.067)
+      -- cycle;
     \protect\end{scope}
     \protect\end{tikzpicture}}
   ~}
 }{}\par
 
+\ifdefempty{\simplexsocialsymbol} {
+  \renewcommand*{\simplexsocialsymbol} {
+    \protect\raisebox{-0.12em}{
+    \protect\begin{tikzpicture}[y=0.8pt, x=0.8pt, yscale=-1.0, xscale=1.0, inner sep=0pt, outer sep=0pt]
+    \protect\begin{scope}[shift={(507,387)}, rotate=45]
+      \protect\path[fill=simplex!80, scale=0.065]
+      (0,0) rectangle +(100,20)
+      (40,-60) rectangle +(20,120);
+
+      \protect\path[fill=simplex, scale=0.065]
+      (0,-60) rectangle +(160,20)
+      (40,-100) rectangle +(20,60)
+      (100,-100) rectangle +(20,160)
+      (100,0) rectangle +(60,20);
+    \protect\end{scope}
+    \protect\end{tikzpicture}}
+  ~}
+}{}\par
+
+\ifdefempty{\threemasocialsymbol} {
+  \renewcommand*{\threemasocialsymbol} {
+    \protect\raisebox{-0.12em}{
+    \protect\begin{tikzpicture}[y=0.8pt, x=0.8pt, yscale=-1.0, xscale=1.0, inner sep=0pt, outer sep=0pt]
+    \protect\begin{scope}[shift={(507,387)}]
+      \protect\path[fill=threema, scale=0.015]
+      % speech bubble
+      (137,25) ellipse (400 and 350)
+      % lock shackle
+      (244.5,-51) arc [start angle=0, end angle=-180, radius=107]
+      (199.5,-51) arc [start angle=0, end angle=-180, radius=62]
+      (199.5,-51) rectangle +(45,52)
+      (30.5,-51) rectangle +(45,52)
+      % lock body
+      (0, 0) rectangle +(274, 196);
+      % triangle
+      \protect\path[fill=threema, scale=0.015]
+      (-200,213) -- +(-41,168) -- +(157,120) -- cycle;
+      % three dots
+      \protect\path[fill=threema, scale=0.015]
+      (-94,553) circle (68)
+      (144,553) circle (68)
+      (390,553) circle (68);
+    \protect\end{scope}
+    \protect\end{tikzpicture}}
+  ~}
+}{}\par
 
 \endinput
 

@@ -58,6 +58,16 @@
   \usepackage{lmodern}
 \fi
 
+% Social icon overrides (X/Twitter and optional Bluesky icon if available)
+\makeatletter
+\@ifundefined{faXTwitter}
+  {\renewcommand*{\twittersocialsymbol}{{\small\textbf{X}}~}}
+  {\renewcommand*{\twittersocialsymbol}{{\small\faXTwitter}~}}
+\@ifundefined{faBluesky}
+  {\newcommand*{\blueskysocialsymbol}{{\small\textbf{B}}~}}
+  {\newcommand*{\blueskysocialsymbol}{{\small\faBluesky}~}}
+\makeatother
+
 % personal data
 \name{Steven Lee}{Meisler}
 \title{Curriculum Vitae}                               % optional, remove / comment the line if not wanted
@@ -70,6 +80,7 @@
 \social[googlescholar]{tBFKYuYAAAAJ}%{0lB9-GcAAAAJ&hl}            % optional, remove / comment the line if not wanted
 \social[linkedin]{Steven-Meisler}                        % optional, remove / comment the line if not wanted
 \social[twitter]{StevenMeisler}                             % optional, remove / comment the line if not wanted
+\social[bluesky][bsky.app/profile/stevenmeisler.com]{@StevenMeisler.com}
 %\social[mastodon]{mastodon.online/@smeisler}                             % optional, remove / comment the line if not wanted
 \social[github]{Smeisler}                              % optional, remove / comment the line if not wanted
 %\social[gitlab]{jdoe}                              % optional, remove / comment the line if not wanted
