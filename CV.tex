@@ -1,3 +1,7 @@
+% Prefer local vendored class/packages before system TeX tree.
+\makeatletter
+\def\input@path{{vendor/moderncv/}{assets/fonts/fontawesome7/}}
+\makeatother
 \documentclass[12pt,legalpaper,sans]{vendor/moderncv/moderncv} %a4paper
 % SET UP BOLD NAME %
 \usepackage{xstring}
@@ -63,17 +67,29 @@
   \usepackage{lmodern}
 \fi
 
-% Social icon overrides (prefer official brand icons if available)
-\IfFileExists{assets/fonts/fontawesome7/fontawesome7.sty}{\usepackage{assets/fonts/fontawesome7/fontawesome7}}{}
+% Social icon overrides (prefer official brand icons when FA7 is fully available)
+\newif\ifusefaSeven
+\usefaSevenfalse
+\IfFileExists{assets/fonts/fontawesome7/fontawesome7.sty}{%
+  \IfFileExists{assets/fonts/fontawesome7/FontAwesome7Free-Regular-400.otf}{%
+    \usefaSeventrue
+  }{}%
+}{}
+\makeatletter
+\@ifpackageloaded{fontawesome5}{\usefaSevenfalse}{}
+\makeatother
+\ifusefaSeven
+  \usepackage{assets/fonts/fontawesome7/fontawesome7}
+\fi
 \definecolor{xbrand}{HTML}{000000}
 \definecolor{blueskybrand}{HTML}{1185FE}
 \makeatletter
-\@ifundefined{faXTwitter}
+\@ifundefined{faIcon}
   {\renewcommand*{\twittersocialsymbol}{{\small\textbf{X}}~}}
-  {\renewcommand*{\twittersocialsymbol}{{\color{xbrand}\small\faXTwitter}~}}
-\@ifundefined{faBluesky}
+  {\renewcommand*{\twittersocialsymbol}{{\color{xbrand}\small\faIcon{x-twitter}}~}}
+\@ifundefined{faIcon}
   {\newcommand*{\blueskysocialsymbol}{{\small\textbf{B}}~}}
-  {\newcommand*{\blueskysocialsymbol}{{\color{blueskybrand}\small\faBluesky}~}}
+  {\newcommand*{\blueskysocialsymbol}{{\color{blueskybrand}\small\faIcon{bluesky}}~}}
 \makeatother
 
 % personal data
@@ -263,7 +279,7 @@ Properties of signals and systems; Examples of biological and biomedical signal 
 
 \section{Software}
 \subsection{\textit{FSuB-Extractor}}
-\cvitem{(Python/Bash)}{\url{https://github.com/smeisler/fsub_extractor}}
+\cvitem{(Python\slash Bash)}{\url{https://github.com/smeisler/fsub_extractor}}
 This is a flexible open-source software toolbox for finding components of white matter bundles that connect to functional regions of interest. Studying these \textbf{F}unctional \textbf{Su}b-\textbf{B}undles (FSuBs) could lead to more precise studies relating brain structure, function, and behavior.
 %\cvitem{2020}{Undergraduate Mentoring Certification, Faculty of Arts \& Science, Division of Science}
 %\subsection{Teaching Assistant, University of Pennsylvania}

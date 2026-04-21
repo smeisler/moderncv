@@ -12,6 +12,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{moderncv}[2026-01-31 v2.5.1 modern curriculum vitae and letter document class]
 
+% Resolve all internal moderncv package loads from the vendored tree.
+\providecommand*{\moderncvvendordir}{vendor/moderncv/}
+
 
 %-------------------------------------------------------------------------------
 %                class options
@@ -176,13 +179,18 @@
 % TODO (?): replace all \newcommand by \NewDocumentCommand
 
 % micro-typography (e.g., character protrusion, font expansion, hyphenatable letterspacing)
-\RequirePackage{microtype}
+% XeTeX/LuaTeX + icon-heavy CVs can produce a lot of non-actionable microtype warnings.
+% Keep microtype on pdfTeX, skip on XeTeX/LuaTeX for cleaner logs.
+\ifxetexorluatex
+\else
+  \RequirePackage{microtype}
+\fi
 
 % stack of key-value elements, used to save personal information
-\RequirePackage{moderncvcollection}
+\RequirePackage{\moderncvvendordir moderncvcollection}
 
 % compatibility package with older versions of moderncv
-\RequirePackageWithOptions{moderncvcompatibility}
+\RequirePackageWithOptions{\moderncvvendordir moderncvcompatibility}
 
 \RequirePackage{expl3}
 
@@ -418,13 +426,13 @@
 
 \newcommand*{\@loadmoderncvpackage}[3][]{%
   \begingroup\edef\x{\endgroup%
-    \noexpand\RequirePackage[#1]{moderncv#2\ifcase#3\or i\or ii\or iii\or iv\or v\or vi\or vii\or viii\or ix\or x\fi}%
+    \noexpand\RequirePackage[#1]{\moderncvvendordir moderncv#2\ifcase#3\or i\or ii\or iii\or iv\or v\or vi\or vii\or viii\or ix\or x\fi}%
   }\x}
 
 % loads a style variant (a combination of header, body and footer)
 % usage: \moderncvstyle{<style variant name>}
 \newcommand*{\moderncvstyle}[2][]{%
-  \RequirePackage[#1]{moderncvstyle#2}}
+  \RequirePackage[#1]{\moderncvvendordir moderncvstyle#2}}
 
 % loads a header variant
 % usage: \moderncvhead[<optional head option>]{<header variant number>}
@@ -444,12 +452,12 @@
 % loads a color scheme
 % usage: \moderncvcolor{<color scheme name>}
 \newcommand*{\moderncvcolor}[1]{%
-  \RequirePackage{moderncvcolor#1}}
+  \RequirePackage{\moderncvvendordir moderncvcolor#1}}
 
 % loads an icons set
 % usage: \moderncvicons{<icon set name>}
 \newcommand*{\moderncvicons}[1]{%
-  \RequirePackage{moderncvicons#1}}
+  \RequirePackage{\moderncvvendordir moderncvicons#1}}
 
 % recomputes all automatic lengths
 \newcommand*{\recomputeheadlengths}{\recomputecvheadlengths}
