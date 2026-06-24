@@ -33,6 +33,35 @@
 \defbibfilter{sub_first}{keyword=submitted and keyword=firstauthor}
 \defbibfilter{sub_co}{keyword=submitted and keyword=coauthor}
 
+% Toggle display of per-paper role annotations in bibliography.
+\newif\ifshowpubroles
+%\showpubrolestrue
+% \showpubrolesfalse % uncomment to hide all role annotations
+
+% Per-paper role statement for award applications.
+% Add `annotation = {...}` to any @article entry in publications.bib to override
+% the default role text.
+\newbibmacro*{paperrolestatement}{%
+  \printfield{annotation}%
+}
+\renewbibmacro*{finentry}{%
+  \ifentrytype{article}{%
+    \ifshowpubroles
+      \iffieldundef{annotation}{%
+        \finentry
+      }{%
+        \setunit{\finentrypunct\par\smallskip}%
+        \printtext{\small\textit{Role: \usebibmacro{paperrolestatement}}}%
+        \finentry
+      }%
+    \else
+      \finentry
+    \fi
+  }{%
+    \finentry
+  }%
+}
+
 \moderncvstyle{casual}
 \moderncvcolor{burgundy}                               % 
 % Ensure section headers and photo frame always follow \moderncvcolor{...}.
@@ -128,7 +157,7 @@
 \makeauthorsbold{Steven,Meisler}
 % ---------------------------------------------------------
 \makecvtitle
-Steven is a developmental neuroinformaticist studying white matter maturation and its role in emerging psychopathology. His graduate work integrated multimodal neuroimaging (fMRI, DWI) with psychocognitive assessments to investigate the neural bases of reading ability, disability, and intervention in children. As a postdoctoral fellow at the University of Pennsylvania, he leverages large-scale datasets and advanced analytic methods to characterize white matter developmental trajectories across infancy and adolescence. Beyond his primary research, Steven is an active advocate for open and reproducible science. He moderates the NeuroStars.org support forum and teaches researchers how to process neuroimaging data using open-source, state-of-the-art tools. He received his bachelor’s and master’s degrees in bioengineering from the University of Pennsylvania (2017, 2018) and his PhD in Speech and Hearing Bioscience and Technology from Harvard University (2024). He plans to enter the tenure-track academic job market in 2027.
+Steven is a developmental neuroinformaticist studying white matter maturation and its role in emerging psychopathology. As a NICHD K99/R00 postdoctoral fellow at the University of Pennsylvania, he leverages large-scale datasets and advanced analytic methods to characterize white matter developmental trajectories across infancy and adolescence. His graduate work integrated multimodal neuroimaging (fMRI, DWI) with psychocognitive assessments to investigate the neural bases of reading ability, disability, and intervention in children. Beyond his primary research, Steven is an active advocate for open and reproducible science. He moderates the NeuroStars.org support forum and teaches researchers how to process neuroimaging data using open-source, state-of-the-art tools. He received his bachelor’s and master’s degrees in bioengineering from the University of Pennsylvania (2017, 2018) and his PhD in Speech and Hearing Bioscience and Technology from Harvard University (2024). \textbf{He is on the tenure-track academic job market for positions beginning fall 2027.}
 \section{Education}
 \cventry{2019--2024}{PhD in Speech and Hearing Bioscience and Technology}{Harvard University, Division of Medical Sciences}{Cambridge, MA}{}{Secondary Field in Mind, Brain \& Behavior \\ Dissertation: "White Matter Structural Correlates of Reading Abilities, Disabilities, and Intervention" - Advisor: John Gabrieli, PhD}
 \cventry{2017--2018}{MSE in Bioengineering}{University of Pennsylvania}{Philadelphia, PA}{\textit{3.79/4}}{Thesis: "Evaluating the Effect of Intracranial EEG Data Cleaning on Univariate and Multivariate Classifier Performance" - Advisor: Michael Kahana, PhD}
@@ -138,7 +167,7 @@ Steven is a developmental neuroinformaticist studying white matter maturation an
 
 \section{Research Positions}
 
-\cventry{2024--}{Postdoctoral Fellow}{Lifespan Informatics \& Neuroimaging Center}{University of Pennsylvania (PI: Theodore Satterthwaite, MD)}{}{\begin{itemize}
+\cventry{2024--}{Postdoctoral Fellow}{Lifespan Informatics \& Neuroimaging Center}{University of Pennsylvania (PI: Theodore Satterthwaite, MD), NIH \textbf{K99/R00} and T32 Fellow}{}{\begin{itemize}
 \item Investigating white matter micro- and macrostructural trajectories in infants and toddlers, and how they are impacted by perinatal insult (e.g., low gestational age).
 \item Gauging the generalizability of white matter growth curves derived from research-quality datasets to data acquired clinically.
 \item Contributing to neuroimaging preprocessing software development (\textit{QSIPrep}, \textit{QSIRecon}, \textit{XCP-D}).
@@ -175,6 +204,16 @@ Steven is a developmental neuroinformaticist studying white matter maturation an
 %\end{itemize}
 %}
 % ---------------------------------------------------------
+\section{Funding}
+\subsection{External}
+\cventry{07/2026 -- 06/2028}{Generalizable Growth Charts of Thalamocortical Development in Early Childhood}{}{\newline Funding Agency: NIH, NICHD (type: K99/R00; HD122318)}{Role: PI}{}
+\cventry{9/2025 -- 8/2026}{Hartwell Fellowship}{}
+{\newline Funding Agency: Hartwell Foundation}{}{}
+\cventry{8/2024 -- 8/2025}{Psychosis: A Convergent Neuroscience Perspective}{}
+{\newline Funding Agency: NIH, NIMH (type: T32; MH019112)}{Role: Trainee}{(PI: Raquel E. Gur)}
+\cventry{9/2023 -- 05/2024}{Neurocognitive Mechanisms of Positive Intervention Response in Reading Disability}{}{\newline Funding Agency: NIH, NICHD (type: F31; HD111139)}{Role: PI}{}
+\cventry{8/2019 -- 8/2022}{Training in Speech and Hearing Sciences}{}{\newline Funding Agency: NIH, NIDCD (type: T32; DC000038)}{Role: Trainee}{(PI: Gwenaelle S. Géléoc)}
+% ---------------------------------------------------------
 %\newpage
 
 % Publications from a BibTeX file without multibib
@@ -190,15 +229,7 @@ Steven is a developmental neuroinformaticist studying white matter maturation an
 \printbibliography[title=Articles in Review / Revision (First Author), type=article, filter=sub_first, resetnumbers=true]
 \printbibliography[title=Published Articles (Co-Author), type=article, filter=pub_co, resetnumbers=true]
 \printbibliography[title=Articles in Review / Revision (Co-Author), type=article, filter=sub_co, resetnumbers=true]
-% ---------------------------------------------------------
-\section{Funding}
-\subsection{External}
-\cventry{9/2025 -- 8/2026}{Hartwell Fellowship}{}
-{\newline Funding Agency: Hartwell Foundation}{}{}
-\cventry{8/2024 -- 8/2025}{Psychosis: A Convergent Neuroscience Perspective}{}
-{\newline Funding Agency: NIH, NIMH (type: T32; MH019112)}{Role: Trainee}{(PI: Raquel E. Gur)}
-\cventry{9/2023 -- 05/2024}{Neurocognitive Mechanisms of Positive Intervention Response in Reading Disability}{}{\newline Funding Agency: NIH, NICHD (type: F31; HD111139)}{Role: PI}{}
-\cventry{8/2019 -- 8/2022}{Training in Speech and Hearing Sciences}{}{\newline Funding Agency: NIH, NIDCD (type: T32; DC000038)}{Role: Trainee}{(PI: Gwenaelle S. Géléoc)}
+
 % ---------------------------------------------------------
 \printbibliography[title=Invited Talks, type=misc, resetnumbers=true] 
 %\printbibliography[title=Poster Presentations, type=unpublished, resetnumbers=true] 
@@ -234,7 +265,7 @@ Steven is a developmental neuroinformaticist studying white matter maturation an
 \cvitem{\textbf{Computing}}{Python, MATLAB, Bash / Terminal, R, \LaTeX}
 \cvitem{\textbf{Methods}}{DWI, fMRI, EEG Time Series Analysis}
 \cvitem{\textbf{Other Skills}}{EPIC, REDCap, IRB, GitHub, BIDS-apps}
-
+\newpage
 % ---------------------------------------------------------
 \section{Verified Peer Reviews}
 \cvitem{-}{\textbf{\textit{Nature Methods, Proceedings of the National Academy of Sciences, Journal of Neuroscience, Imaging Neuroscience, Biological Psychiatry, NeuroImage, Brain Structure \& Function, npj Science of Learning, Neurobiology of Language, Brain Research Bulletin, Neuroinformatics, Neuropsychologia, Frontiers in Neuroscience}}}
@@ -246,7 +277,7 @@ Steven is a developmental neuroinformaticist studying white matter maturation an
 %\cvitem{-}{\textbf{\textit{Brain Research Bulletin}}}
 %\cvitem{-}{\textbf{\textit{Frontiers in Neuroscience}}}
 % ---------------------------------------------------------
-\newpage
+%\newpage
 \section{Professional \& Service Affiliations}
 \cvitem{2025--Present}{Trainee Committee, Flux Congress}
 \cvitem{2025--Present}{Community Liaison, Open Science Special Interest Group, Organization for Human Brain Mapping}
@@ -267,7 +298,7 @@ The ABCD Course on Responsible and Reproducible Data Analyses is a free, open, a
 \cvitem{Falls 2021-2023}{\textbf{How Music Works: Engineering the Acoustical World}}
 How does Shazam know what song is playing? Why do some rooms have better acoustics than others? How and why do singers harmonize? Do high-end musical instruments sound better than cheap ones? How do electronic synthesizers work? What processes are common in designing a device and composing a piece of music? How is music stored and manipulated in a digital form? This class explores these and related themes in an accessible way for all concentrators, regardless of technical background. The class is driven by hands-on projects to enhance your technical literacy, a critical skill for anyone designing solutions to today’s most pressing and complex issues. The projects are designed so that the creativity of students in all fields will have a role to play. Lectures, demonstrations, and guest lecturers/performers are integrated into the class to build foundational knowledge and to inspire. We will also explore wider social and historical themes related to music and acoustics. The class is approached from an engineering perspective, using music and musical instruments as the framework to introduce a broad array of concepts in physics, mathematics, and engineering. Requires no previous exposure to physics or calculus beyond the high school level.
 
-\cvitem{2020}{Undergraduate Mentoring Certification, Faculty of Arts \& Science, Division of Science}
+%\cvitem{2020}{Undergraduate Mentoring Certification, Faculty of Arts \& Science, Division of Science}
 \subsection{Teaching Assistant, University of Pennsylvania}
 \cvitem{Fall 2017}{\textbf{Differential Equations \& Linear Algebra}}
 This course is about linear algebra and systems of differential equations. The linear algebra part of the course begins with matrices and solving linear equations and then has to do with vector spaces in general and linear transformations between them. The topics in differential equations include higher order single variable equations and systems of linear ordinary differential equations. The goal is to enable everyone taking the course to use these tools accurately, efficiently and flexibly. The engineering section of math 240 will emphasize current applications of the theory to communication, optimization, and modeling the behavior of complicated systems.
@@ -276,17 +307,17 @@ This course is about linear algebra and systems of differential equations. The l
 Properties of signals and systems; Examples of biological and biomedical signal and systems; Signal operations, continuous and discrete signals; Linear, time invariant systems; Time domain analysis; Systems characterized by linear constant-coefficient differential equations; Fourier analysis with applications to biomedical signals and systems; Introduction to filtering; Sampling and the sampling theorem. Examples vary from year to year, but usually include signals such as the ECG and blood pressure wave, principles of signal coding in the auditory system and cochlear implants, and simple applications in biomedical imaging.
 
 
-\section{Software}
-\subsection{\textit{FSuB-Extractor}}
-\cvitem{(Python\slash Bash)}{\url{https://github.com/smeisler/fsub_extractor}}
-This is a flexible open-source software toolbox for finding components of white matter bundles that connect to functional regions of interest. Studying these \textbf{F}unctional \textbf{Su}b-\textbf{B}undles (FSuBs) could lead to more precise studies relating brain structure, function, and behavior.
+%\section{Software}
+%\subsection{\textit{FSuB-Extractor}}
+%\cvitem{(Python\slash Bash)}{\url{https://github.com/smeisler/fsub_extractor}}
+%This is a flexible open-source software toolbox for finding components of white matter bundles that connect to functional regions of interest. Studying these \textbf{F}unctional \textbf{Su}b-\textbf{B}undles (FSuBs) could lead to more precise studies relating brain structure, function, and behavior.
 %\cvitem{2020}{Undergraduate Mentoring Certification, Faculty of Arts \& Science, Division of Science}
 %\subsection{Teaching Assistant, University of Pennsylvania}
 %\cvitem{Fall 2017}{Differential Equations \& Linear Algebra}
 %\cvitem{Fall 2016 \\ \& 2017}{Bioengineering Signals \& Systems}
 
-\section{DEJI Experience}
-\cvitem{2024}{University of Rhode Island Diversity and Inclusion Badge Program}
+%\section{DEJI Experience}
+%\cvitem{2024}{University of Rhode Island Diversity and Inclusion Badge Program}
 
 \clearpage
 \end{document}
