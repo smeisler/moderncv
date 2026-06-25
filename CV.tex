@@ -70,12 +70,21 @@
 \colorlet{bodyrulecolor}{color1}
 \colorlet{pictureframecolor}{color1}
 
+% Compact the casual-style footer.
+\setlength{\footskip}{70pt}
+\renewcommand*{\recomputefootlengths}{\setlength{\footwidth}{\textwidth}}
+\patchcmd{\makecvfoot}{\vspace{\baselineskip}}{\vspace{.2\baselineskip}}{}{}
+
 % character encoding
 %\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
 
 % adjust the page margins
-\usepackage[scale=0.75]{geometry}
-\setlength{\footskip}{136.00005pt}                 % depending on the amount of information in the footer, you need to change this value. comment this line out and set it to the size given in the warning
+\usepackage[
+  left=1.06in,
+  right=1.06in,
+  top=1.15in,
+  bottom=1.25in
+]{geometry}
 %\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
 %\setlength{\makecvheadnamewidth}{10cm}            % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
 
@@ -226,9 +235,9 @@ Steven is a developmental neuroinformaticist studying white matter maturation an
 \nocite{*}
 \textit{\\ * Denotes Equal Authorship}
 \printbibliography[title=Published Articles (First Author), type=article, filter=pub_first, resetnumbers=true]
-\printbibliography[title=Articles under Review / Revision (First Author), type=article, filter=sub_first, resetnumbers=true]
+\printbibliography[title=Articles Under Review / Revision (First Author), type=article, filter=sub_first, resetnumbers=true]
 \printbibliography[title=Published Articles (Co-Author), type=article, filter=pub_co, resetnumbers=true]
-\printbibliography[title=Articles in Review / Revision (Co-Author), type=article, filter=sub_co, resetnumbers=true]
+\printbibliography[title=Articles Under Review / Revision (Co-Author), type=article, filter=sub_co, resetnumbers=true]
 
 % ---------------------------------------------------------
 \printbibliography[title=Invited Talks, type=misc, resetnumbers=true] 
@@ -287,23 +296,24 @@ Steven is a developmental neuroinformaticist studying white matter maturation an
 \cvitem{2019--2021}{Co-Chair, Arts \& Neuroscience Cognition Task‐Force, American Congress of Rehabilitation Medicine}
 %\cvitem{2018--2019}{Member, Society for Music Perception \& Cognition}
 % ---------------------------------------------------------
-
+\newpage
 \section{Teaching Experience}
 \subsection{Teaching Fellow, ABCD-ReproNim Course}
 \cvitem{2025}{\textbf{ABCD-ReproNim Course}}
-The ABCD Course on Responsible and Reproducible Data Analyses is a free, open, and virtual educational program based on modern active learning educational approaches, including the use of inverted classroom practices, collaborative learning projects, and a hack week model. Using the “flipped classroom” approach, ABCD-ReproNim students first receive didactic instruction across a semester-long online course that includes asynchronous content delivery via video presentations. Additional course readings are provided to enhance and reinforce online lessons, and data exercises are assigned to ensure learning objectives were met. Students are encouraged to self-organize into small, collaborative learning groups and develop proposals for ABCD data analysis projects. At the completion of the online course, students may participate in a Project Week, where they apply the skills learned and work towards completion of their project activities and learn to contribute to open-source software.
+Supported a virtual course on responsible and reproducible ABCD data analysis, including flipped-classroom instruction, data exercises, collaborative projects, and a project week focused on open-source neuroimaging workflows.
 
 \subsection{Teaching Fellow, Harvard University}
 \cvitem{Falls 2021-2023}{\textbf{How Music Works: Engineering the Acoustical World}}
-How does Shazam know what song is playing? Why do some rooms have better acoustics than others? How and why do singers harmonize? Do high-end musical instruments sound better than cheap ones? How do electronic synthesizers work? What processes are common in designing a device and composing a piece of music? How is music stored and manipulated in a digital form? This class explores these and related themes in an accessible way for all concentrators, regardless of technical background. The class is driven by hands-on projects to enhance your technical literacy, a critical skill for anyone designing solutions to today’s most pressing and complex issues. The projects are designed so that the creativity of students in all fields will have a role to play. Lectures, demonstrations, and guest lecturers/performers are integrated into the class to build foundational knowledge and to inspire. We will also explore wider social and historical themes related to music and acoustics. The class is approached from an engineering perspective, using music and musical instruments as the framework to introduce a broad array of concepts in physics, mathematics, and engineering. Requires no previous exposure to physics or calculus beyond the high school level.
+Led sections and supported hands-on projects for an interdisciplinary engineering course using music and acoustics to introduce concepts in physics, mathematics, signal processing, digital audio, and design.
 
 %\cvitem{2020}{Undergraduate Mentoring Certification, Faculty of Arts \& Science, Division of Science}
 \subsection{Teaching Assistant, University of Pennsylvania}
 \cvitem{Fall 2017}{\textbf{Differential Equations \& Linear Algebra}}
-This course is about linear algebra and systems of differential equations. The linear algebra part of the course begins with matrices and solving linear equations and then has to do with vector spaces in general and linear transformations between them. The topics in differential equations include higher order single variable equations and systems of linear ordinary differential equations. The goal is to enable everyone taking the course to use these tools accurately, efficiently and flexibly. The engineering section of math 240 will emphasize current applications of the theory to communication, optimization, and modeling the behavior of complicated systems.
+Supported instruction in matrices, linear systems, vector spaces, linear transformations, and systems of ordinary differential equations, with emphasis on engineering applications.
 
 \cvitem{Fall 2016 \\ \& 2017}{\textbf{Bioengineering Signals \& Systems}}
-Properties of signals and systems; Examples of biological and biomedical signal and systems; Signal operations, continuous and discrete signals; Linear, time invariant systems; Time domain analysis; Systems characterized by linear constant-coefficient differential equations; Fourier analysis with applications to biomedical signals and systems; Introduction to filtering; Sampling and the sampling theorem. Examples vary from year to year, but usually include signals such as the ECG and blood pressure wave, principles of signal coding in the auditory system and cochlear implants, and simple applications in biomedical imaging.
+Supported instruction in continuous and discrete signals, linear time-invariant systems, Fourier analysis, filtering, sampling, and biomedical applications including ECG, blood pressure, auditory coding, cochlear implants, and imaging.
+
 
 
 %\section{Software}
